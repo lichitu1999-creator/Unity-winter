@@ -1,0 +1,20 @@
+{
+  "name": "Until Winter｜冬日來信",
+  "short_name": "Until Winter",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f2edff",
+  "theme_color": "#7667c8",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

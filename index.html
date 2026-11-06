@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7667c8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Until Winter">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Until Winter｜冬日來信</title>
+<style>
+:root{--ink:#403b70;--muted:#77769b;--lav:#eeeaff;--blue:#e4f1ff;--purple:#8577d5;--line:#ddd8f4;--white:#fff}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC",sans-serif;color:var(--ink);background:linear-gradient(150deg,#f2edff 0%,#e9f4ff 52%,#f8f2ff 100%);min-height:100vh}
+main{max-width:560px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 17px calc(28px + env(safe-area-inset-bottom))}
+.top{display:flex;justify-content:space-between;align-items:center;margin:5px 2px 16px}.brand{font-size:13px;letter-spacing:2px;font-weight:800;color:#7166b8}.snow{font-size:25px}
+.hero{position:relative;overflow:hidden;border-radius:27px;padding:25px 20px 22px;background:linear-gradient(135deg,#dcd5ff,#d8eaff);box-shadow:0 12px 30px #9186c526;text-align:center}
+.hero:before,.hero:after{content:"✦";position:absolute;color:#fff9;font-size:26px}.hero:before{left:19px;top:19px}.hero:after{right:22px;bottom:18px}
+.kicker{font-size:12px;letter-spacing:2px;color:#6c69a4;font-weight:700}.hero h1{font-size:22px;margin:11px 0 2px}.count{font-size:76px;line-height:1.05;font-weight:800;letter-spacing:-3px;color:#6659b4;margin:9px 0 0;font-variant-numeric:tabular-nums}.unit{font-size:17px;font-weight:700;color:#6865a7}.sub{font-size:12px;color:#7778a5;margin-top:9px}
+.progress-wrap{margin:20px 5px 0;text-align:left}.progress-label{display:flex;justify-content:space-between;font-size:12px;color:#69699a;margin-bottom:7px}.track{height:9px;border-radius:20px;background:#ffffffa8;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,#8d7bdd,#7cb9e9);border-radius:20px;transition:width .3s}
+.card{background:#ffffffd9;border:1px solid #fff;border-radius:23px;padding:18px;margin-top:15px;box-shadow:0 8px 22px #8880c314}
+.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.eyebrow{font-size:11px;letter-spacing:1.5px;color:#8a82b7;font-weight:800}.tag{font-size:11px;background:#f0edff;color:#7669ba;padding:6px 9px;border-radius:20px}
+.quote{font-family:Georgia,"Noto Serif TC",serif;font-size:21px;line-height:1.55;font-weight:650;color:#514982;margin:5px 0 10px}.translation{font-size:14px;line-height:1.7;color:#686b91;padding:11px 12px;background:#f3f5ff;border-radius:13px}.author{font-size:12px;color:#8a82b0;line-height:1.6;margin-top:12px}.quote-actions{display:flex;gap:9px;margin-top:14px}.btn{border:0;border-radius:14px;padding:11px 14px;font-size:13px;font-weight:700;cursor:pointer}.primary{background:#8173cf;color:white;flex:1}.soft{background:#eef1ff;color:#6c65a8}.section-title{font-weight:800;font-size:15px;margin:0}.checkin{display:flex;gap:10px;align-items:center}.checkin p{font-size:13px;line-height:1.5;color:#777696;margin:5px 0 0}.checkmark{width:48px;height:48px;border-radius:16px;background:#edf0ff;display:grid;place-items:center;font-size:23px;flex-shrink:0}.checkin button{margin-left:auto;white-space:nowrap}.wish-input{display:flex;gap:8px;margin-top:12px}.wish-input input{min-width:0;flex:1;border:1px solid var(--line);border-radius:12px;padding:11px;background:#fafaff;color:var(--ink);font-size:14px}.wish-list{padding:0;list-style:none;margin:10px 0 0}.wish-list li{display:flex;align-items:center;gap:9px;padding:9px 2px;border-bottom:1px solid #f0edfa;font-size:13px}.wish-list li.done span{text-decoration:line-through;color:#aaa}.wish-list input{accent-color:#8173cf}.delete{margin-left:auto;border:0;background:none;color:#aaa;font-size:18px}
+.footer{text-align:center;color:#9994bb;font-size:11px;padding:18px 5px 4px;line-height:1.7}.settings{display:flex;align-items:center;justify-content:space-between;gap:10px}.settings label{font-size:13px;color:#6d6a91}.settings input{border:1px solid var(--line);border-radius:10px;padding:8px;color:var(--ink);background:white}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#514982;color:white;padding:10px 15px;border-radius:20px;font-size:12px;opacity:0;transition:opacity .2s;pointer-events:none}.toast.show{opacity:1}
+@media(min-width:600px){main{padding-top:28px}}
+</style>
+</head>
+<body>
+<main>
+ <div class="top"><div class="brand">UNTIL WINTER · 冬日來信</div><div class="snow">❄️</div></div>
+ <section class="hero">
+  <div class="kicker">A LITTLE CLOSER TO FREEDOM</div>
+  <h1>距離寒假還有</h1>
+  <div class="count" id="days">--</div><div class="unit">天</div>
+  <div class="sub" id="targetText">設定你的寒假開始日</div>
+  <div class="progress-wrap"><div class="progress-label"><span>寒假進度</span><strong id="percent">—</strong></div><div class="track"><div class="fill" id="progress"></div></div></div>
+ </section>
+
+ <section class="card">
+  <div class="card-head"><div class="eyebrow">TODAY'S LITERARY LETTER</div><span class="tag" id="lang">每日文學語錄</span></div>
+  <div class="quote" id="quote">每天讀一句，替今天留一點光。</div>
+  <div class="translation" id="translation">語錄下方會附上繁體中文翻譯。</div>
+  <div class="author" id="author">作者與作品資訊</div>
+  <div class="quote-actions"><button class="btn primary" id="newQuote">再讀一句 ✨</button><button class="btn soft" id="saveQuote">♡ 收藏</button></div>
+ </section>
+
+ <section class="card">
+  <div class="card-head"><h2 class="section-title">今天也有好好生活嗎？</h2><span class="tag" id="streak">連續 0 天</span></div>
+  <div class="checkin"><div class="checkmark">🌷</div><div><strong id="checkTitle">替今天留下一個記號</strong><p id="checkDesc">不必每天滿分，願意繼續走就很了不起。</p></div><button class="btn primary" id="checkBtn">今日簽到</button></div>
+ </section>
+
+ <section class="card">
+  <div class="card-head"><h2 class="section-title">寒假願望清單</h2><span class="tag" id="wishCount">0 項完成</span></div>
+  <div class="wish-input"><input id="wishInput" maxlength="60" placeholder="例如：睡到自然醒、看一部動畫"><button class="btn soft" id="addWish">新增</button></div>
+  <ul class="wish-list" id="wishList"></ul>
+ </section>
+
+ <section class="card">
+  <div class="card-head"><h2 class="section-title">倒數設定</h2><span class="tag">可隨時修改</span></div>
+  <div class="settings"><label for="dateInput">寒假開始日期</label><input type="date" id="dateInput"></div>
+  <div class="author">日期先以 2027/01/21 作為預設值，你可以依學校正式行事曆自行調整。</div>
+ </section>
+ <div class="footer">慢慢來也沒關係。<br>每一天，都離想要的生活更近一點。 💜🩵</div>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+const quotes = [
+ {lang:"中文",q:"採菊東籬下，悠然見南山。",t:"在日常生活裡，也能找到安然自在的時刻。",a:"陶淵明｜《飲酒・其五》"},
+ {lang:"中文",q:"長風破浪會有時，直掛雲帆濟滄海。",t:"總有一天會乘風破浪，實現自己的理想。",a:"李白｜《行路難・其一》"},
+ {lang:"中文",q:"山重水複疑無路，柳暗花明又一村。",t:"以為走到盡頭時，也許新的道路正要出現。",a:"陸游｜《遊山西村》"},
+ {lang:"中文",q:"千磨萬擊還堅勁，任爾東西南北風。",t:"經歷再多磨練，仍然保有自己的堅定。",a:"鄭燮｜《竹石》"},
+ {lang:"中文",q:"沉舟側畔千帆過，病樹前頭萬木春。",t:"低潮不會是永遠，新的生機總會到來。",a:"劉禹錫｜《酬樂天揚州初逢席上見贈》"},
+ {lang:"English",q:"We know what we are, but know not what we may be.",t:"我們知道自己現在是誰，卻不知道未來可能成為怎樣的人。",a:"William Shakespeare｜Hamlet, Act 4, Scene 5"},
+ {lang:"English",q:"Forever is composed of nows.",t:"永恆，是由無數個當下組成的。",a:"Emily Dickinson｜Poem 624"},
+ {lang:"English",q:"Hope is the thing with feathers.",t:"希望，是一種長著羽毛的事物。",a:"Emily Dickinson｜“Hope” is the thing with feathers"},
+ {lang:"English",q:"There is nothing either good or bad, but thinking makes it so.",t:"事情本身未必有絕對的好壞，往往是我們的想法賦予它意義。",a:"William Shakespeare｜Hamlet, Act 2, Scene 2"},
+ {lang:"日本語",q:"月日は百代の過客にして、行きかふ年もまた旅人なり。",t:"歲月是永恆的旅人，來來去去的每一年也都是旅人。",a:"松尾芭蕉｜《奧之細道》"},
+ {lang:"日本語",q:"不易流行。",t:"真正重要的核心不變，但也要懂得隨著時代前進。",a:"松尾芭蕉｜俳諧理念"},
+ {lang:"日本語",q:"春はあけぼの。",t:"春天最美的時刻，是黎明時分。",a:"清少納言｜《枕草子》"},
+ {lang:"한국어",q:"죽는 날까지 하늘을 우러러 한 점 부끄럼이 없기를.",t:"直到生命最後一天，仍願仰望天空，心中沒有一點愧疚。",a:"윤동주（尹東柱）｜《서시》（序詩）"},
+ {lang:"한국어",q:"별을 노래하는 마음으로 모든 죽어가는 것을 사랑해야지.",t:"懷著歌頌星辰的心，去愛所有正在消逝的生命。",a:"윤동주（尹東柱）｜《서시》（序詩）"}
+];
+const $=id=>document.getElementById(id);
+const todayKey=()=>new Date().toLocaleDateString("en-CA");
+const store=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
+let quoteIndex=Math.floor((new Date().setHours(0,0,0,0))/86400000)%quotes.length;
+function showQuote(i){quoteIndex=(i+quotes.length)%quotes.length;let x=quotes[quoteIndex];$("lang").textContent=x.lang;$("quote").textContent=x.q;$("translation").textContent="翻譯："+x.t;$("author").textContent=x.a;let fav=load("favs",[]);$("saveQuote").textContent=fav.some(f=>f.q===x.q)?"♥ 已收藏":"♡ 收藏"}
+function toast(s){$("toast").textContent=s;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),1600)}
+$("newQuote").onclick=()=>showQuote(quoteIndex+1);
+$("saveQuote").onclick=()=>{let f=load("favs",[]),q=quotes[quoteIndex];if(!f.some(x=>x.q===q.q)){f.push(q);store("favs",f);toast("已收藏這句文學語錄 💜")}else{f=f.filter(x=>x.q!==q.q);store("favs",f);toast("已取消收藏")}showQuote(quoteIndex)};
+let date=load("winterDate","2027-01-21");$("dateInput").value=date;
+function updateCountdown(){let target=new Date(date+"T00:00:00"),now=new Date();let start=new Date(now.getFullYear(),now.getMonth(),now.getDate());let diff=Math.ceil((target-start)/86400000);$("days").textContent=diff>0?diff:diff===0?"0":"🎉";$("targetText").textContent=diff>0?`目標日期：${date.replaceAll("-"," / ")}`:diff===0?"今天開始放寒假！":"寒假已經開始，去享受生活吧！";let total=Math.max(1,Math.ceil((target-new Date("2026-09-01T00:00:00"))/86400000));let elapsed=Math.max(0,Math.min(total,total-diff));let p=Math.round(elapsed/total*100);$("percent").textContent=p+"%";$("progress").style.width=p+"%"}
+$("dateInput").onchange=e=>{date=e.target.value;store("winterDate",date);updateCountdown()};
+function renderCheckin(){let days=load("checkins",[]),done=days.includes(todayKey());$("checkBtn").textContent=done?"已完成 ✓":"今日簽到";$("checkTitle").textContent=done?"今天的你，已經留下記號":"替今天留下一個記號";$("checkDesc").textContent=done?"今天辛苦了，記得好好休息。":"不必每天滿分，願意繼續走就很了不起。";let streak=0,d=new Date();while(days.includes(d.toLocaleDateString("en-CA"))){streak++;d.setDate(d.getDate()-1)}$("streak").textContent=`連續 ${streak} 天`}
+$("checkBtn").onclick=()=>{let days=load("checkins",[]),k=todayKey();if(!days.includes(k))days.push(k);store("checkins",days);renderCheckin();toast("今天也辛苦了，簽到成功 🌷")};
+let wishes=load("wishes",[]);
+function renderWishes(){let ul=$("wishList");ul.innerHTML="";wishes.forEach((w,i)=>{let li=document.createElement("li");li.className=w.done?"done":"";let cb=document.createElement("input");cb.type="checkbox";cb.checked=w.done;cb.onchange=()=>{wishes[i].done=cb.checked;store("wishes",wishes);renderWishes()};let span=document.createElement("span");span.textContent=w.text;let del=document.createElement("button");del.className="delete";del.textContent="×";del.setAttribute("aria-label","刪除");del.onclick=()=>{wishes.splice(i,1);store("wishes",wishes);renderWishes()};li.append(cb,span,del);ul.append(li)});$("wishCount").textContent=`${wishes.filter(w=>w.done).length} / ${wishes.length} 項完成`}
+function addWish(){let v=$("wishInput").value.trim();if(!v)return;wishes.push({text:v,done:false});store("wishes",wishes);$("wishInput").value="";renderWishes()}
+$("addWish").onclick=addWish;$("wishInput").addEventListener("keydown",e=>{if(e.key==="Enter")addWish()});
+showQuote(quoteIndex);updateCountdown();renderCheckin();renderWishes();
+if("serviceWorker" in navigator && location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+</script>
+</body></html>
